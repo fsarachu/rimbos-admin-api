@@ -1,3 +1,1 @@
-window.jQuery = window.$ = require('jquery');
-
-$('body').append('Hello jQuery!');
+import './ui/_all';

@@ -1,3 +1,24 @@
 /*******************************
          Site Overrides
 *******************************/
+#sidebar-toggle {
+  position: absolute;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.ui.inverted.menu {
+  box-shadow: @boxShadow;
+}
+
+.fixed.menu .brand.item {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+}
+
+.fixed.menu + .pusher {
+  padding-top: 6rem;
+}
