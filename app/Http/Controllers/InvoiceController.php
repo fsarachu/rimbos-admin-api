@@ -29,8 +29,8 @@ class InvoiceController extends Controller
         $countries = Country::orderBy('name')->get();
         $currencies = Currency::orderBy('name')->get();
         $payment_methods = PaymentMethod::orderBy('name')->get();
-        $lastInvoice = Invoice::orderBy('created_at', 'desc')->first();
-        return view('invoices.create', compact('categories', 'countries', 'currencies', 'payment_methods', 'lastInvoice'));
+        $last_invoice = Invoice::orderBy('created_at', 'desc')->first();
+        return view('invoices.create', compact('categories', 'countries', 'currencies', 'payment_methods', 'last_invoice'));
     }
 
     /**

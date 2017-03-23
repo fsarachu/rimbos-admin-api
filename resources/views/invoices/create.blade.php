@@ -138,7 +138,7 @@
 
     @if($lastInvoice)
         <script>
-            var lastInvoice = {!! json_encode($lastInvoice) !!};
+            var lastInvoice = {!! json_encode($last_invoice) !!};
             console.log(lastInvoice);
         </script>
     @endif
