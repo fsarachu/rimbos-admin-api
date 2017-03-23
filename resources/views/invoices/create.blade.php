@@ -136,7 +136,7 @@
         </form>
     </div>
 
-    @if($lastInvoice)
+    @if($last_invoice)
         <script>
             var lastInvoice = {!! json_encode($last_invoice) !!};
             console.log(lastInvoice);
