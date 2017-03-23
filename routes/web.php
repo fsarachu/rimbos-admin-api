@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'HomeController');
+
+Route::resource('invoices', 'InvoiceController');
