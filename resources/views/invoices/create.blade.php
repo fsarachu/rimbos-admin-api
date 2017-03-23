@@ -97,12 +97,12 @@
                 <div class="field">
                     <label for="amount_in_original_currency">Importe en moneda de origen</label>
                     <input id="amount_in_original_currency" name="amount_in_original_currency" type="number"
-                           placeholder="0.00" value="0.0" step="0.01" lang="es">
+                           placeholder="0.00" step="0.01" lang="es">
                 </div>
                 <div class="field">
                     <label for="one_dollar_rate">Cotización a dólares</label>
-                    <input id="one_dollar_rate" name="one_dollar_rate" type="number" placeholder="0.00" value="1.30"
-                           step="0.01" lang="en">
+                    <input id="one_dollar_rate" name="one_dollar_rate" type="number" placeholder="0.00" step="0.01"
+                           lang="en">
                 </div>
                 <div class="field">
                     <label for="amount_in_dollars">Importe en dólares</label>
