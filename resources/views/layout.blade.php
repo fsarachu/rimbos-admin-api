@@ -27,5 +27,6 @@
     @yield('content')
 </div>
 <script async src="/js/app.js"></script>
+@yield("scripts")
 </body>
 </html>
