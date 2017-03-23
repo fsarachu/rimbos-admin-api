@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Country;
+use App\Currency;
 use App\Invoice;
+use App\PaymentMethod;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
