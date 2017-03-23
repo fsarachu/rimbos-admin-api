@@ -116,19 +116,19 @@
             <div class="grouped fields">
                 <div class="field">
                     <div class="ui checkbox">
-                        <input id="include_rut" name="include_rut" value="true" type="checkbox">
+                        <input id="include_rut" name="include_rut" value="1" type="checkbox">
                         <label for="include_rut">Incluye RUT empresa</label>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input id="assign_anii" name="assign_anii" value="true" type="checkbox">
+                        <input id="assign_anii" name="assign_anii" value="1" type="checkbox">
                         <label for="assign_anii">Asignar a ANII</label>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input id="personal_spending" name="personal_spending" value="true" type="checkbox">
+                        <input id="personal_spending" name="personal_spending" value="1" type="checkbox">
                         <label for="personal_spending">Gasto Personal</label>
                     </div>
                 </div>
