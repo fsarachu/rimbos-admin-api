@@ -11,10 +11,10 @@
         </div>
         <div class="two column row">
             <div class="column">
-                <a href="/invoices/new" class="ui primary fluid button">Cargar</a>
+                <a href="{{ route('invoices.create') }}" class="ui primary fluid button">Cargar</a>
             </div>
             <div class="column">
-                <a href="/invoices" class="ui secondary fluid button">Listar</a>
+                <a href="{{ route('invoices.index') }}" class="ui secondary fluid button">Listar</a>
             </div>
         </div>
     </div>
