@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Country;
 use App\Currency;
+use App\Http\Requests\StoreInvoice;
 use App\Invoice;
 use App\PaymentMethod;
 use Illuminate\Http\Request;
@@ -43,9 +44,9 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreInvoice $request)
     {
-        //
+        return 'Good';
     }
 
     /**
