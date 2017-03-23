@@ -6,6 +6,7 @@
     <div class="ui text container">
         <form class="ui form" method="post" action="/invoices"
               enctype="multipart/form-data" novalidate>
+            {{ csrf_field() }}
             <h3 class="ui horizontal divider header">Cargar Comprobante</h3>
             <div class="three fields">
                 <div class="field">
