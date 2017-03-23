@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="ui text container">
-        <form class="ui form" method="post" action="/invoices"
+        <form class="ui form" method="post" action="{{ route('invoices.store') }}"
               enctype="multipart/form-data" novalidate>
             {{ csrf_field() }}
             <h3 class="ui horizontal divider header">Cargar Comprobante</h3>
