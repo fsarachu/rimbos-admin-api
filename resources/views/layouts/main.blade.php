@@ -12,6 +12,8 @@
 @include('layouts.nav')
 
 <div class="pusher">
+    @include('layouts.flashes')
+
     @yield('content')
 </div>
 
