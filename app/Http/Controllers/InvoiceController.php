@@ -9,6 +9,7 @@ use App\Http\Requests\StoreInvoice;
 use App\Invoice;
 use App\PaymentMethod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {
@@ -46,7 +47,39 @@ class InvoiceController extends Controller
      */
     public function store(StoreInvoice $request)
     {
-        return 'Good';
+        $invoice = new Invoice;
+
+//        $invoice->fill(request(['date', 'trip', 'country_id', 'description', 'business_name', 'invoice_number',
+//            'category_id', 'payment_method_id', 'currency_id', 'amount_in_original_currency', 'one_dollar_rate']));
+        $invoice->date = $request->input('date');
+        $invoice->trip = $request->input('trip');
+        $invoice->country_id = $request->input('country');
+        $invoice->description = $request->input('description');
+        $invoice->business_name = $request->input('business_name');
+        $invoice->invoice_number = $request->input('invoice_number');
+        $invoice->category_id = $request->input('category');
+        $invoice->payment_method_id = $request->input('payment_method');
+        $invoice->currency_id = $request->input('currency');
+        $invoice->amount_in_original_currency = $request->input('amount_in_original_currency');
+        $invoice->one_dollar_rate = $request->input('one_dollar_rate');
+        $invoice->amount_in_dollars = $invoice->amount_in_original_currency / $invoice->one_dollar_rate;
+        $invoice->actual_paid_amount = $invoice->amount_in_dollars;
+        $invoice->include_rut = $request->input('include_rut', false);
+        $invoice->assign_anii = $request->input('assign_anii', false);
+        $invoice->personal_spending = $request->input('personal_spending', false);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('invoices');
+            $invoice->image_url = Storage::url($path);
+        }
+
+        if ($invoice->save()) {
+            $request->session()->flash('positive_message', 'Comprobante cargado!');
+            return redirect(route('invoices.index'));
+        } else {
+            $request->session()->flash('negative_message', 'No se pudo cargar el comprobante');
+            return back();
+        }
     }
 
     /**
