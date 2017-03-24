@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="right floated content">
                                     <div class="description">
-                                        @if($invoice->includes_rut)
+                                        @if($invoice->include_rut)
                                             Sí
                                         @else
                                             No
