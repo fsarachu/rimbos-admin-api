@@ -14,3 +14,5 @@
 Route::get('/', 'HomeController');
 
 Route::resource('invoices', 'InvoiceController');
+
+Route::get('/storage/{file_name}', 'FileController')->where(['file_name' => '.*']);
