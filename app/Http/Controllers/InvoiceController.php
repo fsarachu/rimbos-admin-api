@@ -49,19 +49,9 @@ class InvoiceController extends Controller
     {
         $invoice = new Invoice;
 
-//        $invoice->fill(request(['date', 'trip', 'country_id', 'description', 'business_name', 'invoice_number',
-//            'category_id', 'payment_method_id', 'currency_id', 'amount_in_original_currency', 'one_dollar_rate']));
-        $invoice->date = $request->input('date');
-        $invoice->trip = $request->input('trip');
-        $invoice->country_id = $request->input('country');
-        $invoice->description = $request->input('description');
-        $invoice->business_name = $request->input('business_name');
-        $invoice->invoice_number = $request->input('invoice_number');
-        $invoice->category_id = $request->input('category');
-        $invoice->payment_method_id = $request->input('payment_method');
-        $invoice->currency_id = $request->input('currency');
-        $invoice->amount_in_original_currency = $request->input('amount_in_original_currency');
-        $invoice->one_dollar_rate = $request->input('one_dollar_rate');
+        // TODO: maybe an invoice factory here(?
+        $invoice->fill($request->only(['date', 'trip', 'country_id', 'description', 'business_name', 'invoice_number',
+            'category_id', 'payment_method_id', 'currency_id', 'amount_in_original_currency', 'one_dollar_rate']));
         $invoice->amount_in_dollars = $invoice->amount_in_original_currency / $invoice->one_dollar_rate;
         $invoice->actual_paid_amount = $invoice->amount_in_dollars;
         $invoice->include_rut = $request->input('include_rut', false);
