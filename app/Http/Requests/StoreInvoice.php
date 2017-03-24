@@ -34,7 +34,7 @@ class StoreInvoice extends FormRequest
             'payment_method' => 'required|exists:payment_methods,id',
             'currency' => 'required|exists:currencies,id',
             'amount_in_original_currency' => 'required|numeric',
-            'one_dollar_rate' => 'required|numeric',
+            'one_dollar_rate' => 'required|numeric|min:0.01',
             'image' => 'image',
             'include_rut' => 'boolean',
             'assign_anii' => 'boolean',
