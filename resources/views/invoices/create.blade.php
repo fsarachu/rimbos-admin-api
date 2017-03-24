@@ -22,7 +22,7 @@
                 <div class="field">
                     <label>País</label>
                     <div id="country-dropdown" class="ui dropdown search selection">
-                        <input type="hidden" name="country">
+                        <input type="hidden" name="country_id">
                         <div class="default text">Seleccionar País</div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
@@ -51,7 +51,7 @@
                 <div class="field">
                     <label>Categoría</label>
                     <div class="ui dropdown search selection">
-                        <input type="hidden" name="category">
+                        <input type="hidden" name="category_id">
                         <div class="default text">Seleccionar categoría</div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
@@ -66,7 +66,7 @@
                 <div class="field">
                     <label>Método de pago</label>
                     <div class="ui dropdown selection">
-                        <input type="hidden" name="payment_method">
+                        <input type="hidden" name="payment_method_id">
                         <div class="default text">Seleccionar método</div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
@@ -79,7 +79,7 @@
                 <div class="field">
                     <label>Moneda</label>
                     <div id="currency-dropdown" class="ui dropdown search selection">
-                        <input type="hidden" name="currency">
+                        <input type="hidden" name="currency_id">
                         <div class="default text">Seleccionar moneda</div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
