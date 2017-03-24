@@ -16,11 +16,11 @@ class CreateInvoicesTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
-            $table->string('trip');
+            $table->string('trip')->nullable();
             $table->integer('country_id');
-            $table->text('description');
-            $table->string('business_name');
-            $table->string('invoice_number');
+            $table->text('description')->nullable();
+            $table->string('business_name')->nullable();
+            $table->string('invoice_number')->nullable();
             $table->integer('category_id');
             $table->integer('payment_method_id');
             $table->integer('currency_id');
@@ -28,7 +28,7 @@ class CreateInvoicesTable extends Migration
             $table->decimal('one_dollar_rate');
             $table->decimal('amount_in_dollars');
             $table->decimal('actual_paid_amount');
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->boolean('include_rut')->default(false);
             $table->boolean('assign_anii')->default(false);
             $table->boolean('personal_spending')->default(false);
