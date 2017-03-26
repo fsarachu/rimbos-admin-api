@@ -14303,6 +14303,12 @@ $('.message .close').on('click', function () {
 $('#sidebar-toggle').on('click', function () {
     $('#sidebar-menu').sidebar('toggle');
 });
+
+$('.ui.dropdown').dropdown();
+
+$('#logout-trigger').on('click', function () {
+    return $('#logout-form').submit();
+});
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
