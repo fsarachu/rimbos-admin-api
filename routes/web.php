@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', 'HomeController');
+Route::get('/', 'HomeController@index');
 
 Route::resource('invoices', 'InvoiceController');
 
 Route::get('/storage/{file_name}', 'FileController')->where(['file_name' => '.*']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
