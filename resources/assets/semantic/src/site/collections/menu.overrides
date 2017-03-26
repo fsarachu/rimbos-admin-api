@@ -7,18 +7,19 @@
   cursor: pointer;
 }
 
-.ui.inverted.menu {
+.ui.main.menu {
+  margin: 0 0 1rem;
+  border-radius: 0;
+}
+
+.ui.inverted.main.menu {
   box-shadow: @boxShadow;
 }
 
-.fixed.menu .brand.item {
+.main.menu .brand.item {
   display: block;
   margin: 0;
   width: 100%;
   font-weight: bold;
   text-align: center;
-}
-
-.fixed.menu + .pusher {
-  padding-top: 6rem;
 }

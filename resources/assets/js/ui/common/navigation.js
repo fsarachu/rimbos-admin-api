@@ -1,5 +1,10 @@
+import '../../../semantic/src/definitions/behaviors/visibility';
 import '../../../semantic/src/definitions/modules/sidebar';
 import '../../../semantic/src/definitions/modules/dropdown';
+
+$('.main.menu').visibility({
+    type: 'fixed'
+});
 
 $('#sidebar-toggle').on('click', () => {
     $('#sidebar-menu').sidebar('toggle');

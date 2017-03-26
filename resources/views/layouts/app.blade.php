@@ -9,9 +9,11 @@
 </head>
 <body>
 
-@include('layouts.nav')
+@include('layouts.nav.sidebar')
 
 <div class="pusher">
+    @include('layouts.nav.topbar')
+
     @include('layouts.flashes')
 
     @yield('content')
@@ -19,6 +21,5 @@
 
 <script async src="/js/app.js"></script>
 @yield('scripts')
-
 </body>
 </html>
