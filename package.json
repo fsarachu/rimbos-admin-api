@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "semantic-ui": "cd resources/assets/semantic/ && gulp build && cd ../../../",
+    "semantic-ui-css": "cd resources/assets/semantic/ && gulp build-css && cd ../../../",
     "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch-poll": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
