@@ -1,4 +1,4 @@
-import './form';
-import './message';
-import './sidebar';
-import './table';
+import './common/message';
+import './common/navigation';
+import './invoices/form';
+import './invoices/table';
