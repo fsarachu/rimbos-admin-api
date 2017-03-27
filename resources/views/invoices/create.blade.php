@@ -4,21 +4,30 @@
 
 @section('content')
     <div class="ui text container">
+
+        @include('layouts.flashes.form')
+
         <form class="ui form" method="post" action="{{ route('invoices.store') }}"
               enctype="multipart/form-data" novalidate>
+
             {{ csrf_field() }}
+
             <h3 class="ui horizontal divider header">Cargar Comprobante</h3>
+
             <div class="three fields">
+
                 <div class="field">
                     <label for="date">Fecha</label>
                     <div class="ui calendar" id="calendar">
                         <input id="date" name="date" placeholder="Seleccionar fecha" type="text" readonly="">
                     </div>
                 </div>
+
                 <div class="field">
                     <label for="trip">Viaje</label>
                     <input id="trip" name="trip" placeholder="Identificador de viaje" type="text">
                 </div>
+
                 <div class="field">
                     <label>País</label>
                     <div id="country-dropdown" class="ui dropdown search selection">
@@ -34,20 +43,25 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="field">
                 <label for="description">Descripción</label>
                 <textarea id="description" name="description" rows="3"></textarea>
             </div>
+
             <div class="three fields">
+
                 <div class="field">
                     <label for="business_name">Empresa</label>
                     <input id="business_name" name="business_name" placeholder="Nombre de empresa" type="text">
                 </div>
+
                 <div class="field">
                     <label for="invoice_number">Nro recibo</label>
                     <input id="invoice_number" name="invoice_number" placeholder="Número del recibo" type="text">
                 </div>
+
                 <div class="field">
                     <label>Categoría</label>
                     <div class="ui dropdown search selection">
@@ -61,8 +75,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
             <div class="two fields">
+
                 <div class="field">
                     <label>Método de pago</label>
                     <div class="ui dropdown selection">
@@ -76,6 +93,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="field">
                     <label>Moneda</label>
                     <div id="currency-dropdown" class="ui dropdown search selection">
@@ -91,50 +109,64 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="three fields">
+
                 <div class="field">
                     <label for="amount_in_original_currency">Importe en moneda de origen</label>
                     <input id="amount_in_original_currency" name="amount_in_original_currency" type="number"
                            placeholder="0.00" step="0.01" lang="es">
                 </div>
+
                 <div class="field">
                     <label for="one_dollar_rate">Cotización a dólares</label>
                     <input id="one_dollar_rate" name="one_dollar_rate" type="number" placeholder="0.00" step="0.01"
                            lang="en">
                 </div>
+
                 <div class="field">
                     <label for="amount_in_dollars">Importe en dólares</label>
                     <input id="amount_in_dollars" name="amount_in_dollars" type="text" value="$0.00" disabled="">
                 </div>
+
             </div>
+
             <div class="field">
                 <label for="image">Imagen</label>
                 <input id="image" name="image" type="file">
             </div>
+
             <div class="grouped fields">
+
                 <div class="field">
                     <div class="ui checkbox">
                         <input id="include_rut" name="include_rut" value="1" type="checkbox">
                         <label for="include_rut">Incluye RUT empresa</label>
                     </div>
                 </div>
+
                 <div class="field">
                     <div class="ui checkbox">
                         <input id="assign_anii" name="assign_anii" value="1" type="checkbox">
                         <label for="assign_anii">Asignar a ANII</label>
                     </div>
                 </div>
+
                 <div class="field">
                     <div class="ui checkbox">
                         <input id="personal_spending" name="personal_spending" value="1" type="checkbox">
                         <label for="personal_spending">Gasto Personal</label>
                     </div>
                 </div>
+
             </div>
+
             <input class="ui secondary submit large fluid button" value="Cargar" type="submit">
+
         </form>
+
     </div>
 
     @if($last_invoice)
