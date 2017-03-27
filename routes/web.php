@@ -17,6 +17,8 @@ Route::resource('invoices', 'InvoiceController');
 
 Route::get('/storage/{file_name}', 'FileController')->where(['file_name' => '.*']);
 
-Auth::routes();
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 
-Route::get('/home', 'HomeController@index');
+Route::post('/login', 'Auth\LoginController@login');
+
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
