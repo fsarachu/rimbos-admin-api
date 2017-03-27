@@ -16,7 +16,7 @@
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input id="name" placeholder="Username" type="text" name="name" value="{{ old('name') }}"
+                            <input id="username" placeholder="Username" type="text" name="username" value="{{ old('username') }}"
                                    required autofocus>
                         </div>
                     </div>
