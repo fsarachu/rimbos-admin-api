@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Login')
+
 @section('content')
     <div class="ui center aligned grid small container">
         <div class="column">
