@@ -64,7 +64,7 @@
 
                 <div class="field">
                     <label>Categoría</label>
-                    <div class="ui dropdown search selection">
+                    <div id="category-dropdown" class="ui dropdown search selection">
                         <input type="hidden" name="category_id">
                         <div class="default text">Seleccionar categoría</div>
                         <i class="dropdown icon"></i>
@@ -82,7 +82,7 @@
 
                 <div class="field">
                     <label>Método de pago</label>
-                    <div class="ui dropdown selection">
+                    <div id="payment-method-dropdown" class="ui dropdown selection">
                         <input type="hidden" name="payment_method_id">
                         <div class="default text">Seleccionar método</div>
                         <i class="dropdown icon"></i>
@@ -169,10 +169,22 @@
 
     </div>
 
-    @if($last_invoice)
-        <script>
-            var lastInvoice = {!! json_encode($last_invoice) !!};
-            console.log(lastInvoice);
-        </script>
-    @endif
+    <script>
+        var defaultValues = {!! json_encode(array(
+                'date' => old('date'),
+                'trip' => old('trip'),
+                'country_id' => (!old('country_id') && isset($last_invoice)) ? $last_invoice->country_id : old('country_id'),
+                'description' => old('description'),
+                'business_name' => old('business_name'),
+                'invoice_number' => old('invoice_number'),
+                'category_id' => old('category_id'),
+                'payment_method_id' => old('payment_method_id'),
+                'currency_id' => (!old('currency_id') && isset($last_invoice)) ? $last_invoice->currency_id : old('currency_id'),
+                'amount_in_original_currency' => old('amount_in_original_currency'),
+                'one_dollar_rate' => (!old('one_dollar_rate') && isset($last_invoice)) ? $last_invoice->one_dollar_rate : old('one_dollar_rate'),
+                'include_rut' => old('include_rut'),
+                'assign_anii' => old('assign_anii'),
+                'personal_spending' => old('personal_spending')
+            )) !!};
+    </script>
 @endsection

@@ -14283,8 +14283,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__semantic_src_definitions_modules_transition___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__semantic_src_definitions_modules_transition__);
 
 
-$('.message .close').on('click', function () {
-    $(this).closest('.message').transition('fade');
+$(function () {
+    $('.message .close').on('click', function () {
+        $(this).closest('.message').transition('fade');
+    });
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
@@ -14303,18 +14305,20 @@ $('.message .close').on('click', function () {
 
 
 
-$('.main.menu').visibility({
-    type: 'fixed'
-});
+$(function () {
+    $('.main.menu').visibility({
+        type: 'fixed'
+    });
 
-$('#sidebar-toggle').on('click', function () {
-    $('#sidebar-menu').sidebar('toggle');
-});
+    $('#sidebar-toggle').on('click', function () {
+        $('#sidebar-menu').sidebar('toggle');
+    });
 
-$('.ui.dropdown').dropdown();
+    $('.ui.dropdown').dropdown();
 
-$('#logout-trigger').on('click', function () {
-    return $('#logout-form').submit();
+    $('#logout-trigger').on('click', function () {
+        return $('#logout-form').submit();
+    });
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
@@ -14339,47 +14343,75 @@ $('#logout-trigger').on('click', function () {
 
 
 
-/* jQuery objects caching */
-var $dropdowns = $('.dropdown.selection');
-var $checkboxes = $('.ui.checkbox');
-var $calendar = $('#calendar');
-var $tripInput = $('#trip');
-var $countryDropdown = $('#country-dropdown');
-var $currencyDropdown = $('#currency-dropdown');
-var $amountInOriginalCurrencyInput = $('#amount_in_original_currency');
-var $oneDollarRateInput = $('#one_dollar_rate');
-var $amountInDollars = $('#amount_in_dollars');
+$(function () {
+    /* jQuery objects caching */
+    var $dropdowns = $('.dropdown.selection');
+    var $checkboxes = $('.ui.checkbox');
 
-/* Options variables */
-var calendarOptions = {
-    type: 'date',
-    formatter: {
-        date: formatDate
+    var $calendar = $('#calendar');
+    var $tripInput = $('#trip');
+    var $countryDropdown = $('#country-dropdown');
+    var $descriptionTextarea = $('#description');
+    var $businessNameInput = $('#business_name');
+    var $invoiceNumberInput = $('#invoice_number');
+    var $categoryDropdown = $('#category-dropdown');
+    var $paymentMethodDropdown = $('#payment-method-dropdown');
+    var $currencyDropdown = $('#currency-dropdown');
+    var $amountInOriginalCurrencyInput = $('#amount_in_original_currency');
+    var $oneDollarRateInput = $('#one_dollar_rate');
+    var $amountInDollars = $('#amount_in_dollars');
+    var $includeRutCheckbox = $('#include_rut');
+    var $assignAniiCheckbox = $('#assign_anii');
+    var $personalSpendingCheckbox = $('#personal_spending');
+
+    /* Options variables */
+    var calendarOptions = {
+        type: 'date',
+        formatter: {
+            date: formatDate
+        }
+    };
+
+    /* Enable Form Javascript Components */
+    $dropdowns.dropdown();
+    $checkboxes.checkbox();
+    $calendar.calendar(calendarOptions);
+
+    /* Initialize fields */
+    var defaultValues = window.defaultValues;
+
+    $calendar.calendar('set date', defaultValues.date ? defaultValues.date : new Date());
+    $tripInput.attr('value', defaultValues.trip ? defaultValues.trip : null);
+    $countryDropdown.dropdown('set selected', defaultValues.country_id ? defaultValues.country_id : null);
+    $descriptionTextarea.text(defaultValues.description ? defaultValues.description : '');
+    $businessNameInput.attr('value', defaultValues.business_name ? defaultValues.business_name : null);
+    $invoiceNumberInput.attr('value', defaultValues.invoice_number ? defaultValues.invoice_number : null);
+    $categoryDropdown.dropdown('set selected', defaultValues.category_id ? defaultValues.category_id : null);
+    $paymentMethodDropdown.dropdown('set selected', defaultValues.payment_method_id ? defaultValues.payment_method_id : null);
+    $currencyDropdown.dropdown('set selected', defaultValues.currency_id ? defaultValues.currency_id : null);
+    $amountInOriginalCurrencyInput.attr('value', defaultValues.amount_in_original_currency ? defaultValues.amount_in_original_currency : null);
+    $oneDollarRateInput.attr('value', defaultValues.one_dollar_rate ? defaultValues.one_dollar_rate : null);
+    $amountInDollars.val('$' + getAmountInDollars());
+
+    if (defaultValues.includes_rut) {
+        $includeRutCheckbox.check();
     }
-};
 
-/* Enable Form Javascript Components */
-$dropdowns.dropdown();
-$checkboxes.checkbox();
-$calendar.calendar(calendarOptions);
+    if (defaultValues.assign_anii) {
+        $assignAniiCheckbox.check();
+    }
 
-/* Initialize fields */
-$amountInDollars.val('$' + getAmountInDollars());
-$calendar.calendar('set date', new Date());
+    if (defaultValues.personal_spending) {
+        $personalSpendingCheckbox.check();
+    }
 
-if (window.lastInvoice) {
-    $tripInput.attr('value', window.lastInvoice.trip);
-    $countryDropdown.dropdown('set selected', window.lastInvoice.country_id);
-    $currencyDropdown.dropdown('set selected', window.lastInvoice.currency_id);
-    $oneDollarRateInput.attr('value', window.lastInvoice.one_dollar_rate);
-}
-
-/* Register Event Listeners*/
-$amountInOriginalCurrencyInput.on('keyup blur change', function () {
-    return $('#amount_in_dollars').val('$' + getAmountInDollars());
-});
-$oneDollarRateInput.on('keyup blur change', function () {
-    return $('#amount_in_dollars').val('$' + getAmountInDollars());
+    /* Register Event Listeners*/
+    $amountInOriginalCurrencyInput.on('keyup blur change', function () {
+        return $('#amount_in_dollars').val('$' + getAmountInDollars());
+    });
+    $oneDollarRateInput.on('keyup blur change', function () {
+        return $('#amount_in_dollars').val('$' + getAmountInDollars());
+    });
 });
 
 /* Helper Functions */
@@ -14417,12 +14449,14 @@ function getAmountInDollars() {
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {$('table.selectable tr').on('click', function (e) {
-    var href = $(e.currentTarget).data("href");
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+    $('table.selectable tr').on('click', function (e) {
+        var href = $(e.currentTarget).data("href");
 
-    if (href) {
-        window.location = href;
-    }
+        if (href) {
+            window.location = href;
+        }
+    });
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

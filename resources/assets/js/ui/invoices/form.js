@@ -4,44 +4,74 @@ import '../../../semantic/src/definitions/modules/checkbox';
 import '../../../semantic/src/definitions/modules/popup';
 import '../../../../../node_modules/semantic-ui-calendar/src/definitions/modules/calendar'
 
-/* jQuery objects caching */
-let $dropdowns = $('.dropdown.selection');
-let $checkboxes = $('.ui.checkbox');
-let $calendar = $('#calendar');
-let $tripInput = $('#trip');
-let $countryDropdown = $('#country-dropdown');
-let $currencyDropdown = $('#currency-dropdown');
-let $amountInOriginalCurrencyInput = $('#amount_in_original_currency');
-let $oneDollarRateInput = $('#one_dollar_rate');
-let $amountInDollars = $('#amount_in_dollars');
+$(function () {
+    /* jQuery objects caching */
+    let $dropdowns = $('.dropdown.selection');
+    let $checkboxes = $('.ui.checkbox');
 
-/* Options variables */
-let calendarOptions = {
-    type: 'date',
-    formatter: {
-        date: formatDate
+    let $calendar = $('#calendar');
+    let $tripInput = $('#trip');
+    let $countryDropdown = $('#country-dropdown');
+    let $descriptionTextarea = $('#description');
+    let $businessNameInput = $('#business_name');
+    let $invoiceNumberInput = $('#invoice_number');
+    let $categoryDropdown = $('#category-dropdown');
+    let $paymentMethodDropdown = $('#payment-method-dropdown');
+    let $currencyDropdown = $('#currency-dropdown');
+    let $amountInOriginalCurrencyInput = $('#amount_in_original_currency');
+    let $oneDollarRateInput = $('#one_dollar_rate');
+    let $amountInDollars = $('#amount_in_dollars');
+    let $includeRutCheckbox = $('#include_rut');
+    let $assignAniiCheckbox = $('#assign_anii');
+    let $personalSpendingCheckbox = $('#personal_spending');
+
+    /* Options variables */
+    let calendarOptions = {
+        type: 'date',
+        formatter: {
+            date: formatDate
+        }
+    };
+
+    /* Enable Form Javascript Components */
+    $dropdowns.dropdown();
+    $checkboxes.checkbox();
+    $calendar.calendar(calendarOptions);
+
+    /* Initialize fields */
+    let defaultValues = window.defaultValues;
+
+    $calendar.calendar('set date', (defaultValues.date) ? defaultValues.date : new Date());
+    $tripInput.attr('value', (defaultValues.trip) ? defaultValues.trip : null);
+    $countryDropdown.dropdown('set selected', (defaultValues.country_id) ? defaultValues.country_id : null);
+    $descriptionTextarea.text((defaultValues.description) ? defaultValues.description : '');
+    $businessNameInput.attr('value', (defaultValues.business_name) ? defaultValues.business_name : null);
+    $invoiceNumberInput.attr('value', (defaultValues.invoice_number) ? defaultValues.invoice_number : null);
+    $categoryDropdown.dropdown('set selected', (defaultValues.category_id) ? defaultValues.category_id : null);
+    $paymentMethodDropdown.dropdown('set selected', (defaultValues.payment_method_id) ? defaultValues.payment_method_id : null);
+    $currencyDropdown.dropdown('set selected', (defaultValues.currency_id) ? defaultValues.currency_id : null);
+    $amountInOriginalCurrencyInput.attr('value', (defaultValues.amount_in_original_currency) ? defaultValues.amount_in_original_currency : null);
+    $oneDollarRateInput.attr('value', (defaultValues.one_dollar_rate) ? defaultValues.one_dollar_rate : null);
+    $amountInDollars.val('$' + getAmountInDollars());
+
+    if (defaultValues.includes_rut) {
+        $includeRutCheckbox.check();
     }
-};
 
-/* Enable Form Javascript Components */
-$dropdowns.dropdown();
-$checkboxes.checkbox();
-$calendar.calendar(calendarOptions);
+    if (defaultValues.assign_anii) {
+        $assignAniiCheckbox.check();
+    }
 
-/* Initialize fields */
-$amountInDollars.val('$' + getAmountInDollars());
-$calendar.calendar('set date', new Date());
+    if (defaultValues.personal_spending) {
+        $personalSpendingCheckbox.check();
+    }
 
-if (window.lastInvoice) {
-    $tripInput.attr('value', window.lastInvoice.trip);
-    $countryDropdown.dropdown('set selected', window.lastInvoice.country_id);
-    $currencyDropdown.dropdown('set selected', window.lastInvoice.currency_id);
-    $oneDollarRateInput.attr('value', window.lastInvoice.one_dollar_rate);
-}
+    /* Register Event Listeners*/
+    $amountInOriginalCurrencyInput.on('keyup blur change', () => $('#amount_in_dollars').val('$' + getAmountInDollars()));
+    $oneDollarRateInput.on('keyup blur change', () => $('#amount_in_dollars').val('$' + getAmountInDollars()));
 
-/* Register Event Listeners*/
-$amountInOriginalCurrencyInput.on('keyup blur change', () => $('#amount_in_dollars').val('$' + getAmountInDollars()));
-$oneDollarRateInput.on('keyup blur change', () => $('#amount_in_dollars').val('$' + getAmountInDollars()));
+});
+
 
 /* Helper Functions */
 function zeroFill(number, width) {
