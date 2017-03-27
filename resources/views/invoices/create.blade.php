@@ -172,7 +172,7 @@
     <script>
         var defaultValues = {!! json_encode(array(
                 'date' => old('date'),
-                'trip' => old('trip'),
+                'trip' => (!old('trip') && isset($last_invoice)) ? $last_invoice->trip : old('trip'),
                 'country_id' => (!old('country_id') && isset($last_invoice)) ? $last_invoice->country_id : old('country_id'),
                 'description' => old('description'),
                 'business_name' => old('business_name'),
