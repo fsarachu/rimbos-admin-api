@@ -3,7 +3,7 @@
     <div class="item">
         <div class="ui inline dropdown">
             <img class="ui avatar image" src="/images/user_placeholder.jpg">
-            <span>{{ Auth::user()->name }}</span>
+            <span>{{ Auth::user()->username }}</span>
             <i class="dropdown icon"></i>
             <div class="menu">
                 <div id="logout-trigger" class="item">
