@@ -62,6 +62,7 @@ class InvoiceController extends Controller
         // TODO: maybe an invoice factory here(?
         $invoice->fill($request->only(['date', 'trip', 'country_id', 'description', 'business_name', 'invoice_number',
             'category_id', 'payment_method_id', 'currency_id', 'amount_in_original_currency', 'one_dollar_rate']));
+        $invoice->user_id = $request->user()->id;
         $invoice->amount_in_dollars = $invoice->amount_in_original_currency / $invoice->one_dollar_rate;
         $invoice->actual_paid_amount = $invoice->amount_in_dollars;
         $invoice->include_rut = $request->input('include_rut', false);
