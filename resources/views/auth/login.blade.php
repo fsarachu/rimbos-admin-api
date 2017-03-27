@@ -17,14 +17,15 @@
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input name="email" placeholder="E-mail" type="text" value="{{ old('email') }}" autofocus>
+                            <input name="email" placeholder="E-mail" type="email" value="{{ old('email') }}" required
+                                   autofocus>
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="lock icon"></i>
-                            <input name="password" placeholder="Contraseña" type="password">
+                            <input name="password" placeholder="Contraseña" type="password" required>
                         </div>
                     </div>
 
