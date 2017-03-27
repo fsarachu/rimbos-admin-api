@@ -9,12 +9,14 @@
 </head>
 <body>
 
-@include('layouts.nav.sidebar')
+@if(Auth::check())
+    @include('layouts.nav.sidebar')
+@endif
 
 <div class="pusher">
     @include('layouts.nav.topbar')
 
-    @include('layouts.flashes')
+    @include('layouts.flashes.generic')
 
     @yield('content')
 </div>

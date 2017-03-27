@@ -1,6 +1,8 @@
 <div class="ui red borderless inverted large main menu">
-    <div id="sidebar-toggle" class="item">
-        <i class="sidebar icon"></i>
-    </div>
+    @if(Auth::check())
+        <div id="sidebar-toggle" class="item">
+            <i class="sidebar icon"></i>
+        </div>
+    @endif
     <div class="brand item"><a href="/">· RimbosAdmin ·</a></div>
 </div>
