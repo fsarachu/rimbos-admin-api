@@ -71,7 +71,8 @@ class InvoiceController extends Controller
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('invoices');
-            $invoice->image_url = Storage::url($path);
+            $url = env('APP_ADMIN_URL') . Storage::url($path);
+            $invoice->image_url = $url;
         }
 
         if ($invoice->save()) {
