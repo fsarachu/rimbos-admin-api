@@ -2,7 +2,7 @@ import '../../../semantic/src/definitions/modules/transition';
 import '../../../semantic/src/definitions/modules/dropdown';
 import '../../../semantic/src/definitions/modules/checkbox';
 import '../../../semantic/src/definitions/modules/popup';
-import '../../../../../node_modules/semantic-ui-calendar/src/definitions/modules/calendar'
+import 'semantic-ui-calendar/src/definitions/modules/calendar'
 
 $(function () {
     /* jQuery objects caching */
