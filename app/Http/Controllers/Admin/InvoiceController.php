@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Country;
 use App\Currency;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreInvoice;
 use App\Invoice;
 use App\PaymentMethod;
@@ -31,7 +32,7 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = Invoice::with('currency', 'payment_method')->orderBy('created_at', 'desc')->get();
-        return view('invoices.index', compact('invoices'));
+        return view('admin.invoices.index', compact('invoices'));
     }
 
     /**
@@ -46,7 +47,7 @@ class InvoiceController extends Controller
         $currencies = Currency::orderBy('name')->get();
         $payment_methods = PaymentMethod::orderBy('name')->get();
         $last_invoice = Invoice::orderBy('created_at', 'desc')->first();
-        return view('invoices.create', compact('categories', 'countries', 'currencies', 'payment_methods', 'last_invoice'));
+        return view('admin.invoices.create', compact('categories', 'countries', 'currencies', 'payment_methods', 'last_invoice'));
     }
 
     /**
@@ -77,7 +78,7 @@ class InvoiceController extends Controller
 
         if ($invoice->save()) {
             $request->session()->flash('positive_message', 'Comprobante cargado!');
-            return redirect(route('invoices.index'));
+            return redirect(route('admin.invoices.index'));
         } else {
             $request->session()->flash('negative_message', 'No se pudo cargar el comprobante');
             return back();
@@ -92,7 +93,7 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        return view('invoices.show', compact('invoice'));
+        return view('admin.invoices.show', compact('invoice'));
     }
 
     /**
