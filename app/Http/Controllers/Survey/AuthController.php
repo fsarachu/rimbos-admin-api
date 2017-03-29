@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Survey;
 
 use App\Http\Controllers\Controller;
+use Httpful\Request as HttpfulRequest;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -11,24 +13,32 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function authenticate($token, $event_id)
+    public function authenticate(Request $request, $token, $event_id)
     {
-        $response = \Httpful\Request::get(env('RIMBOS_USERS_API'))
+        $response = HttpfulRequest::get(env('RIMBOS_USERS_API'))
             ->addHeader('Authorization', $token)
             ->send();
+
+        if ($response->code != 200) {
+            abort(403);
+        }
 
         $user = $response->body;
 
-        $response = \Httpful\Request::get(env('RIMBOS_EVENTS_API') . $event_id)
+        $response = HttpfulRequest::get(env('RIMBOS_EVENTS_API') . $event_id)
             ->addHeader('Authorization', $token)
             ->send();
 
-        $event = $response->body;
+        if ($response->code != 200) {
+            abort(403);
+        }
 
-        session(['rimbos_user' => $user]);
-        session(['rimbos_event' => $event]);
+        $event = $response->body->data;
 
-        return session();
+        $request->session()->put(['rimbos_user' => $user]);
+        $request->session()->put(['rimbos_event' => $event]);
+
+        return redirect()->route('survey.show');
     }
 
 }
