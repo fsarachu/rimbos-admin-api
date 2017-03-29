@@ -13,8 +13,15 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function authenticate(Request $request, $token, $event_id)
+    public function authenticate(Request $request)
     {
+        $token = $request->query('token', null);
+        $event_id = $request->query('eventId', null);
+
+        if (!$token || !$event_id) {
+            abort(403);
+        }
+
         $response = HttpfulRequest::get(env('RIMBOS_USERS_API'))
             ->addHeader('Authorization', $token)
             ->send();

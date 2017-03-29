@@ -28,7 +28,8 @@ Route::group(['domain' => env('APP_ADMIN_DOMAIN')], function () {
 });
 
 Route::group(['domain' => env('APP_SURVEY_DOMAIN')], function () {
-    Route::get('/auth/{token}/{event_id}', 'Survey\AuthController@authenticate')->name('survey.auth');
+    Route::get('/auth', 'Survey\AuthController@authenticate')->name('survey.auth');
+
     Route::get('/', 'Survey\SurveyController@show')->name('survey.show');
     Route::post('/', 'Survey\SurveyController@answer')->name('survey.answer');
 });
