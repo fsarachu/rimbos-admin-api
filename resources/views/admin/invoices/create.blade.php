@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('title', 'Cargar Comprobante')
 
 @section('content')
     <div class="ui text container">
 
-        @include('layouts.flashes.form')
+        @include('admin.layouts.flashes.form')
 
-        <form class="ui form" method="post" action="{{ route('invoices.store') }}"
+        <form class="ui form" method="post" action="{{ route('admin.invoices.store') }}"
               enctype="multipart/form-data" novalidate>
 
             {{ csrf_field() }}

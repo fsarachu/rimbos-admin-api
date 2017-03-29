@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('title', 'Register')
 
@@ -9,7 +9,7 @@
                 <form class="ui login form" method="POST" action="{{ route('register') }}">
                     <h2 class="header">Sign up</h2>
 
-                    @include('layouts.flashes.form')
+                    @include('admin.layouts.flashes.form')
 
                     {{ csrf_field() }}
 

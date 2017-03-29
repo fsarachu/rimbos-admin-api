@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('title', 'Login')
 
@@ -10,7 +10,7 @@
 
                     <h2 class="header">Login</h2>
 
-                    @include('layouts.flashes.form')
+                    @include('admin.layouts.flashes.form')
 
                     {{ csrf_field() }}
 

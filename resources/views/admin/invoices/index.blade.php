@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('title', 'Comprobantes')
 
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
             @foreach($invoices as $invoice)
-                <tr data-href="/invoices/{{ $invoice->id }}">
+                <tr data-href="{{ route('admin.invoices.show', ['invoice' => $invoice->id])}}">
                     <td>
                         {{ $invoice->id }}
                     </td>

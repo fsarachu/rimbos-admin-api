@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('title', 'Comprobantes')
 
@@ -168,7 +168,7 @@
                                         <img src="{{ $invoice->image_url }}">
                                     </a>
                                 @else
-                                    <img class="ui fluid image" src="/images/placeholder_image.png"
+                                    <img class="ui fluid image" src="{{ asset('images/placeholder_image.png') }}"
                                          alt="No image available">
                                 @endif
                             </div>
