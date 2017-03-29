@@ -1,0 +1,1 @@
+.ui.survey.segment{background-color:#ff5456;min-height:100%}.option.row{cursor:pointer}.option.row .star.icon{opacity:.5}.option.row,.option.row .star.icon{transition:.15s ease-in-out}.option.row.selected,.option.row:hover{text-shadow:0 0 10px rgba(255,255,255,.5)}.option.row.selected .star.icon,.option.row:hover .star.icon{opacity:1;color:#fbe808}input.hidden{display:none}

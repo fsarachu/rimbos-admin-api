@@ -22,3 +22,7 @@ mix.js('resources/assets/admin/js/app.js', 'public/js/admin.js')
     ], 'public/css/admin.css')
     .copy('resources/assets/admin/semantic/dist/themes/default/assets/fonts', 'public/fonts')
     .copy('resources/assets/admin/semantic/dist/themes/default/assets/images', 'public/images');
+
+/* Survey assets */
+mix.js('resources/assets/survey/js/survey.js', 'public/js/survey.js')
+    .styles('resources/assets/survey/css/survey.css', 'public/css/survey.css');
