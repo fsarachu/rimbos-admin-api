@@ -12,7 +12,7 @@ const {mix} = require('laravel-mix');
  */
 
 /* Common assets */
-mix.styles(['resources/assets/common/css/404.css'], 'public/css/404.css');
+mix.styles(['resources/assets/common/css/40x.css'], 'public/css/40x.css');
 
 /* Admin Assets */
 mix.js('resources/assets/admin/js/app.js', 'public/js/admin.js')
