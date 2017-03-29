@@ -2,7 +2,7 @@ server {
 	listen 80;
 	listen [::]:80;
 
-	server_name admin.rimbos.dev;
+	server_name .rimbos.dev;
 
 	root /var/www/rimbos-admin/public;
 	index index.php index.html;
