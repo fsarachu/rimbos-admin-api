@@ -12,18 +12,19 @@ class SurveyController extends Controller
      *
      * @return void
      */
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth.survey');
+    }
 
     /**
      * Show the survey.
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
+//        dd($request->session()->all());
         return view('survey.show');
     }
 
@@ -34,6 +35,13 @@ class SurveyController extends Controller
      */
     public function answer(Request $request)
     {
-        return $request->all();
+        $data = [
+            'rating' => $request->input('rating'),
+            'extra_comments' => $request->input('extra_comments'),
+            'user' => $request->session()->pull('rimbos_user'),
+            'event' => $request->session()->pull('rimbos_event')
+        ];
+
+        return $data;
     }
 }
