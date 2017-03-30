@@ -22,7 +22,7 @@
     <h3 class="header">------ @yield('code')! ------</h3>
 
     <p>@yield('message')</p>
-    <p>Puedes probar ir al <a href="{{ env('APP_URL') }}">inicio</a></p>
+    <p>Puedes probar ir al <a href="http://www.rimbos.com/">inicio</a></p>
     <p><span class="blinking-cursor"></span></p>
 </div>
 
