@@ -5,25 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Country;
 use App\Currency;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreInvoice;
 use App\Invoice;
 use App\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class InvoiceController extends Controller
+class InvoiceController extends AdminBaseController
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of invoices.
      *
