@@ -15,36 +15,44 @@ class AuthController extends Controller
      */
     public function authenticate(Request $request)
     {
+        // Get query parameters (Not using clean URLs beacause mobile app "already works this way")
         $token = $request->query('token', null);
         $event_id = $request->query('eventId', null);
 
-        if (!$token || !$event_id) {
+        // Check required parameter
+        if (!$event_id) {
             abort(403);
         }
 
-        $response = HttpfulRequest::get(env('RIMBOS_USERS_API'))
-            ->addHeader('Authorization', $token)
-            ->send();
+        // If a token was provided, lets sniff some user data!
+        $user_data = null;
 
-        if ($response->code != 200) {
-            abort(403);
+        if ($token) {
+            $response = HttpfulRequest::get(env('RIMBOS_USERS_API'))
+                ->addHeader('Authorization', $token)
+                ->send();
+
+            if ($response->code != 200) {
+                abort(403);
+            }
+
+            $user_data = $response->body;
         }
 
-        $user = $response->body;
-
+        // Retrieve event data
         $response = HttpfulRequest::get(env('RIMBOS_EVENTS_API') . $event_id)
-            ->addHeader('Authorization', $token)
             ->send();
 
         if ($response->code != 200) {
             abort(403);
         }
 
-        $event = $response->body->data;
+        $event_data = $response->body->data;
 
-        $request->session()->put(['rimbos_user' => $user]);
-        $request->session()->put(['rimbos_event' => $event]);
+        // Store data in session
+        $request->session()->put(['rimbos_user' => $user_data, 'rimbos_event' => $event_data]);
 
+        // Redirect to survey
         return redirect()->route('survey.show');
     }
 

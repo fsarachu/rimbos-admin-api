@@ -15,7 +15,8 @@ class AuthSurvey
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->session()->has('rimbos_user') || !$request->session()->has('rimbos_event')) {
+        // Check if user was authenticated with the required event id
+        if (!$request->session()->has('rimbos_event')) {
             abort(403);
         }
 
