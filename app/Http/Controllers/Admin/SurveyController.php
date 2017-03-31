@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSurvey;
+use App\Http\Requests\UpdateSurvey;
 use App\Survey;
 use Illuminate\Http\Request;
 
@@ -48,7 +49,7 @@ class SurveyController extends Controller
             Survey::create($parameters);
 
             $request->session()->flash('positive_message', 'Encuesta creada!');
-            return redirect(route('admin.suveys.index'));
+            return redirect(route('admin.surveys.index'));
 
         } catch (Exception $e) {
 
@@ -77,7 +78,7 @@ class SurveyController extends Controller
      */
     public function edit(Survey $survey)
     {
-        //
+        return view('admin.surveys.edit', compact('survey'));
     }
 
     /**
@@ -87,9 +88,22 @@ class SurveyController extends Controller
      * @param  \App\Survey $survey
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Survey $survey)
+    public function update(UpdateSurvey $request, Survey $survey)
     {
-        //
+        $parameters = array_merge(
+            $request->only('event_id', 'description', 'question', 'extra_comments_title'),
+            ['has_extra_comments' => $request->input('has_extra_comments', false)]
+        );
+
+        $survey->fill($parameters);
+
+        if ($survey->save()) {
+            $request->session()->flash('positive_message', 'Encuesta actualizada!');
+            return redirect(route('admin.surveys.index'));
+        } else {
+            $request->session()->flash('negative_message', 'No se pudo actualizar la encuesta');
+            return back();
+        }
     }
 
     /**
