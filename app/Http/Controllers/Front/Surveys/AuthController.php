@@ -12,6 +12,7 @@ class AuthController extends Controller
     /**
      * Authorize the survey.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function authenticate(Request $request)
