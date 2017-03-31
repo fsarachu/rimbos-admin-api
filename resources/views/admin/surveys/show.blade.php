@@ -70,18 +70,18 @@
                 @endif
                 <tr>
                     <td class="right aligned">
-                        <strong>Fecha de creación:</strong>
+                        <strong>Creada:</strong>
                     </td>
                     <td class="left aligned">
-                        {{ ucfirst(Carbon\Carbon::parse($survey->created_at)->formatLocalized('%B %d, %Y')) }}
+                        {{ ucfirst(Carbon\Carbon::parse($survey->created_at)->toDateTimeString()) }}
                     </td>
                 </tr>
                 <tr>
                     <td class="right aligned">
-                        <strong>Fecha de la última edición:</strong>
+                        <strong>Última edición:</strong>
                     </td>
                     <td class="left aligned">
-                        {{ ucfirst(Carbon\Carbon::parse($survey->created_at)->formatLocalized('%B %d, %Y')) }}
+                        {{ ucfirst(Carbon\Carbon::parse($survey->updated_at)->toDateTimeString()) }}
                     </td>
                 </tr>
                 <tr>
