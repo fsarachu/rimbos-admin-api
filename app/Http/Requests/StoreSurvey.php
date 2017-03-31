@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreSurvey extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'event_id' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'question' => 'required|string|max:255',
+            'has_extra_comments' => 'required_with:extra_comments_title|bool',
+            'extra_comments_title' => 'required_with:has_extra_comments'
+        ];
+    }
+}
