@@ -22,6 +22,8 @@ Route::group(['domain' => env('APP_ADMIN_DOMAIN')], function () {
     Route::get('/', 'Admin\HomeController@index')->name('admin.index');
     Route::resource('invoices', 'Admin\InvoiceController', ['as' => 'admin']);
     Route::resource('surveys', 'Admin\SurveyController', ['as' => 'admin']);
+    Route::get('/surveys/{survey}/delete', 'Admin\SurveyController@delete')->name('admin.surveys.delete');
+    Route::get('/surveys/{survey}/preview', 'Admin\SurveyController@preview')->name('admin.surveys.preview');
     Route::resource('surveys.answers', 'Admin\SurveyAnswerController', ['as' => 'admin']);
     //Auth::routes();
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
