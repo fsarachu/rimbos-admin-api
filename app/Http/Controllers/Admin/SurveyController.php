@@ -59,14 +59,14 @@ class SurveyController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified survey.
      *
      * @param  \App\Survey $survey
      * @return \Illuminate\Http\Response
      */
     public function show(Survey $survey)
     {
-        //
+        return view('admin.surveys.show', compact('survey'));
     }
 
     /**
