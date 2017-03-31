@@ -50,14 +50,20 @@ class AuthController extends Controller
 
         $event_data = $response->body->data;
 
-        // Store data in session
-        $request->session()->put(['rimbos_user' => $user_data, 'rimbos_event' => $event_data]);
-
         //Pick a survey
         $survey = Survey::where('event_id', '=', $event_id)->inRandomOrder()->first();
 
+        // Store data in session
+        $request->session()->put(
+            [
+                'rimbos_user' => $user_data,
+                'rimbos_event' => $event_data,
+                'survey_id' => $survey->id
+            ]
+        );
+
         // Redirect to survey
-        return redirect()->route('survey.show', compact('survey'));
+        return redirect()->route('survey.show');
     }
 
 }

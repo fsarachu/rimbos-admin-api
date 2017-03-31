@@ -23,8 +23,10 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Survey $survey)
+    public function show(Request $request)
     {
+        $survey = Survey::find($request->session()->get('survey_id'));
+
         return view('front.surveys.show', compact('survey'));
     }
 
@@ -36,6 +38,7 @@ class SurveyController extends Controller
     public function answer(Request $request)
     {
         $data = [
+            'survey' => $request->session()->pull('survey_id'),
             'rating' => $request->input('rating'),
             'extra_comments' => $request->input('extra_comments'),
             'user' => $request->session()->pull('rimbos_user'),
