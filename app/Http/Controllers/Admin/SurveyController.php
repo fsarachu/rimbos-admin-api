@@ -93,6 +93,17 @@ class SurveyController extends Controller
     }
 
     /**
+     * Show the confirmation screen for deleting the specified resource.
+     *
+     * @param  \App\Survey $survey
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Survey $survey)
+    {
+        //
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Survey $survey
