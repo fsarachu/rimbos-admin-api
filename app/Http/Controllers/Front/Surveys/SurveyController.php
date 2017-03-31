@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\Surveys;
 
 use App\Http\Controllers\Controller;
+use App\Survey;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
@@ -22,10 +23,9 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Survey $survey)
     {
-//        dd($request->session()->all());
-        return view('front.surveys.show');
+        return view('front.surveys.show', compact('survey'));
     }
 
     /**

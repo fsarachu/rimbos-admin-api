@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\Surveys;
 
 use App\Http\Controllers\Controller;
+use App\Survey;
 use Httpful\Request as HttpfulRequest;
 use Illuminate\Http\Request;
 
@@ -52,8 +53,11 @@ class AuthController extends Controller
         // Store data in session
         $request->session()->put(['rimbos_user' => $user_data, 'rimbos_event' => $event_data]);
 
+        //Pick a survey
+        $survey = Survey::where('event_id', '=', $event_id)->inRandomOrder()->first();
+
         // Redirect to survey
-        return redirect()->route('survey.show');
+        return redirect()->route('survey.show', compact('survey'));
     }
 
 }
