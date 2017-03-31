@@ -28,5 +28,9 @@
     <a class="item" href="{{ route('admin.invoices.create')  }}">Cargar</a>
     <a class="item" href="{{ route('admin.invoices.index') }}">Listar</a>
 
+    <div class="header item">Encuestas</div>
+
+    <a class="item" href="{{ route('admin.surveys.create')  }}">Crear</a>
+    <a class="item" href="{{ route('admin.surveys.index') }}">Listar</a>
 </div>
 

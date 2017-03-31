@@ -3,19 +3,29 @@
 @section('title', 'Inicio')
 
 @section('content')
-    <div class="ui grid text container">
-        <div class="row">
-            <div class="column">
-                <h2 class="ui horizontal divider header">Comprobantes</h2>
+    <div class="ui small container">
+
+        <div class="ui vertical fluid massive menu">
+
+            <div class="item">
+                <div class="header">Comprobantes</div>
+
+                <div class="menu">
+                    <a class="item" href="{{ route('admin.invoices.create') }}">Cargar</a>
+                    <a class="item" href="{{ route('admin.invoices.index') }}">Listar</a>
+                </div>
             </div>
+
+            <div class="item">
+                <div class="header">Encuestas</div>
+
+                <div class="menu">
+                    <a class="item" href="{{ route('admin.surveys.create') }}">Crear</a>
+                    <a class="item" href="{{ route('admin.surveys.index') }}">Listar</a>
+                </div>
+            </div>
+
         </div>
-        <div class="two column row">
-            <div class="column">
-                <a href="{{ route('admin.invoices.create') }}" class="ui primary fluid button">Cargar</a>
-            </div>
-            <div class="column">
-                <a href="{{ route('admin.invoices.index') }}" class="ui secondary fluid button">Listar</a>
-            </div>
-        </div>
+
     </div>
 @endsection
