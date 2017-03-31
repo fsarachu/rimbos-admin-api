@@ -16,7 +16,8 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        //
+        $surveys = Survey::with('answers')->orderBy('created_at', 'desc')->get();
+        return view('admin.surveys.index', compact('surveys'));
     }
 
     /**
