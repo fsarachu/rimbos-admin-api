@@ -30,10 +30,10 @@ Route::group(['domain' => env('APP_ADMIN_DOMAIN')], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-/* Event Surveys Routes */
+/* Surveys Routes */
 Route::group(['domain' => env('APP_SURVEY_DOMAIN')], function () {
-    Route::get('/auth', 'Survey\AuthController@authenticate')->name('survey.auth');
+    Route::get('/auth', 'Front\AuthController@authenticate')->name('survey.auth');
 
-    Route::get('/', 'Survey\SurveyController@show')->name('survey.show');
-    Route::post('/', 'Survey\SurveyController@answer')->name('survey.answer');
+    Route::get('/', 'Front\SurveyController@show')->name('survey.show');
+    Route::post('/', 'Front\SurveyController@answer')->name('survey.answer');
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Survey;
+namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Httpful\Request as HttpfulRequest;
