@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Front\Surveys;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSurveyAnswer;
 use App\Survey;
+use App\SurveyAnswer;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
@@ -21,6 +23,7 @@ class SurveyController extends Controller
     /**
      * Show the survey.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
@@ -33,18 +36,20 @@ class SurveyController extends Controller
     /**
      * Submit the survey answer.
      *
+     * @param StoreSurveyAnswer $request
      * @return \Illuminate\Http\Response
      */
-    public function answer(Request $request)
+    public function submit(StoreSurveyAnswer $request)
     {
-        $data = [
-            'survey' => $request->session()->pull('survey_id'),
-            'rating' => $request->input('rating'),
-            'extra_comments' => $request->input('extra_comments'),
-            'user' => $request->session()->pull('rimbos_user'),
-            'event' => $request->session()->pull('rimbos_event')
-        ];
+        SurveyAnswer::create(
+            [
+                'survey_id' => $request->session()->pull('survey_id'),
+                'rating' => $request->input('rating'),
+                'extra_comments' => $request->input('extra_comments'),
+                'user_id' => $request->session()->pull('rimbos_user')->_id,
+            ]
+        );
 
-        return $data;
+        return redirect('surveys.thanks');
     }
 }
