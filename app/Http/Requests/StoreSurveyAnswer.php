@@ -25,7 +25,7 @@ class StoreSurveyAnswer extends FormRequest
     {
         return [
             'rating' => 'required|integer|between:1,5',
-            'extra_comments' => 'string|max:255'
+            'extra_comments' => 'nullable|string|max:255'
         ];
     }
 }
