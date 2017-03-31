@@ -9,7 +9,7 @@
             @foreach($surveys as $survey)
                 <div class="item">
                     <div class="content">
-                        <a target="_blank" href="{{ route('admin.surveys.show', ['survey' => $survey->id]) }}"
+                        <a href="{{ route('admin.surveys.show', ['survey' => $survey->id]) }}"
                            class="header">
                             #{{ $survey->id }}: {{ $survey->question }}
                         </a>
