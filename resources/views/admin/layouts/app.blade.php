@@ -5,7 +5,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <title>Rimbos Admin - @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-
+    @yield('styles')
 </head>
 <body>
 
