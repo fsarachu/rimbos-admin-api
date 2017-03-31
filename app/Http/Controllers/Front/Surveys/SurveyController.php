@@ -41,25 +41,25 @@ class SurveyController extends Controller
      */
     public function submit(StoreSurveyAnswer $request)
     {
-        SurveyAnswer::create(
-            [
-                'survey_id' => $request->session()->pull('survey_id'),
-                'rating' => $request->input('rating'),
-                'extra_comments' => $request->input('extra_comments'),
-                'user_id' => $request->session()->has('rimbos_user') ? $request->session()->get('rimbos_user')->_id : null
-            ]
-        );
+        // Store answer
+        try {
+            SurveyAnswer::create(
+                [
+                    'survey_id' => $request->session()->get('survey_id'),
+                    'rating' => $request->input('rating'),
+                    'extra_comments' => $request->input('extra_comments'),
+                    'user_id' => $request->session()->has('rimbos_user') ? $request->session()->get('rimbos_user')->_id : null
+                ]
+            );
 
-        return redirect('surveys.thanks');
-    }
+            // Destroy survey session
+            $request->session()->forget(['rimbos_user', 'rimbos_event', 'survey_id']);
 
-    /**
-     * Show the thanks view.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function thanks()
-    {
-        return view('front.surveys.thanks');
+            // Thank you!
+            return redirect(route('survey.thanks'));
+
+        } catch (Exception $e) {
+            return back();
+        }
     }
 }
