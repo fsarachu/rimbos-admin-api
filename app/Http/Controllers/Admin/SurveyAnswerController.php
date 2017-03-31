@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Survey;
 use App\SurveyAnswer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,9 +14,9 @@ class SurveyAnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Survey $survey)
     {
-        //
+        return view('admin.surveys.answers.index', compact('survey'));
     }
 
     /**
@@ -31,7 +32,7 @@ class SurveyAnswerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,7 +43,7 @@ class SurveyAnswerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SurveyAnswer  $surveyAnswer
+     * @param  \App\SurveyAnswer $surveyAnswer
      * @return \Illuminate\Http\Response
      */
     public function show(SurveyAnswer $surveyAnswer)
@@ -53,7 +54,7 @@ class SurveyAnswerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SurveyAnswer  $surveyAnswer
+     * @param  \App\SurveyAnswer $surveyAnswer
      * @return \Illuminate\Http\Response
      */
     public function edit(SurveyAnswer $surveyAnswer)
@@ -64,8 +65,8 @@ class SurveyAnswerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SurveyAnswer  $surveyAnswer
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\SurveyAnswer $surveyAnswer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, SurveyAnswer $surveyAnswer)
@@ -76,7 +77,7 @@ class SurveyAnswerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SurveyAnswer  $surveyAnswer
+     * @param  \App\SurveyAnswer $surveyAnswer
      * @return \Illuminate\Http\Response
      */
     public function destroy(SurveyAnswer $surveyAnswer)
