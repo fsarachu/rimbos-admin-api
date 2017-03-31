@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSurvey;
 use App\Survey;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,26 @@ class SurveyController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSurvey $request)
     {
-        //
+        $parameters = array_merge(
+            $request->only('event_id', 'description', 'question', 'extra_comments_title'),
+            ['has_extra_comments' => $request->input('has_extra_comments', false)]
+        );
+
+        try {
+
+            Survey::create($parameters);
+
+            $request->session()->flash('positive_message', 'Encuesta creada!');
+            return redirect(route('admin.suveys.index'));
+
+        } catch (Exception $e) {
+
+            $request->session()->flash('negative_message', 'No se pudo crear la encuesta');
+            return back();
+
+        }
     }
 
     /**
