@@ -41,29 +41,31 @@ $(function () {
     /* Initialize fields */
     let defaultValues = window.defaultValues;
 
-    $calendar.calendar('set date', (defaultValues.date) ? defaultValues.date : new Date());
-    $tripInput.attr('value', (defaultValues.trip) ? defaultValues.trip : null);
-    $countryDropdown.dropdown('set selected', (defaultValues.country_id) ? defaultValues.country_id : null);
-    $descriptionTextarea.text((defaultValues.description) ? defaultValues.description : '');
-    $businessNameInput.attr('value', (defaultValues.business_name) ? defaultValues.business_name : null);
-    $invoiceNumberInput.attr('value', (defaultValues.invoice_number) ? defaultValues.invoice_number : null);
-    $categoryDropdown.dropdown('set selected', (defaultValues.category_id) ? defaultValues.category_id : null);
-    $paymentMethodDropdown.dropdown('set selected', (defaultValues.payment_method_id) ? defaultValues.payment_method_id : null);
-    $currencyDropdown.dropdown('set selected', (defaultValues.currency_id) ? defaultValues.currency_id : null);
-    $amountInOriginalCurrencyInput.attr('value', (defaultValues.amount_in_original_currency) ? defaultValues.amount_in_original_currency : null);
-    $oneDollarRateInput.attr('value', (defaultValues.one_dollar_rate) ? defaultValues.one_dollar_rate : null);
-    $amountInDollars.val('$' + getAmountInDollars());
+    if (defaultValues) {
+        $calendar.calendar('set date', (defaultValues.date) ? defaultValues.date : new Date());
+        $tripInput.attr('value', (defaultValues.trip) ? defaultValues.trip : null);
+        $countryDropdown.dropdown('set selected', (defaultValues.country_id) ? defaultValues.country_id : null);
+        $descriptionTextarea.text((defaultValues.description) ? defaultValues.description : '');
+        $businessNameInput.attr('value', (defaultValues.business_name) ? defaultValues.business_name : null);
+        $invoiceNumberInput.attr('value', (defaultValues.invoice_number) ? defaultValues.invoice_number : null);
+        $categoryDropdown.dropdown('set selected', (defaultValues.category_id) ? defaultValues.category_id : null);
+        $paymentMethodDropdown.dropdown('set selected', (defaultValues.payment_method_id) ? defaultValues.payment_method_id : null);
+        $currencyDropdown.dropdown('set selected', (defaultValues.currency_id) ? defaultValues.currency_id : null);
+        $amountInOriginalCurrencyInput.attr('value', (defaultValues.amount_in_original_currency) ? defaultValues.amount_in_original_currency : null);
+        $oneDollarRateInput.attr('value', (defaultValues.one_dollar_rate) ? defaultValues.one_dollar_rate : null);
+        $amountInDollars.val('$' + getAmountInDollars());
 
-    if (defaultValues.includes_rut) {
-        $includeRutCheckbox.check();
-    }
+        if (defaultValues.includes_rut) {
+            $includeRutCheckbox.check();
+        }
 
-    if (defaultValues.assign_anii) {
-        $assignAniiCheckbox.check();
-    }
+        if (defaultValues.assign_anii) {
+            $assignAniiCheckbox.check();
+        }
 
-    if (defaultValues.personal_spending) {
-        $personalSpendingCheckbox.check();
+        if (defaultValues.personal_spending) {
+            $personalSpendingCheckbox.check();
+        }
     }
 
     /* Register Event Listeners*/
