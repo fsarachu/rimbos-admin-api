@@ -113,4 +113,15 @@ class SurveyController extends Controller
     {
         //
     }
+
+    /**
+     * Preview the specified survey.
+     *
+     * @param  \App\Survey $survey
+     * @return \Illuminate\Http\Response
+     */
+    public function preview(Survey $survey)
+    {
+        return view('front.surveys.show', compact('survey'));
+    }
 }
