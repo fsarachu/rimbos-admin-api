@@ -86,7 +86,7 @@
 
                 <div class="row">
                     <div class="column">
-                        <textarea name="extra_comments" rows="2"></textarea>
+                        <textarea name="extra_comments" rows="2" maxlength="254"></textarea>
                     </div>
                 </div>
             @endif
