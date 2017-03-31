@@ -11,8 +11,9 @@
 </head>
 <body>
 <div class="ui survey inverted vertical segment">
-    <form class="ui survey form" method="POST" action="{{ route('survey.answer') }}">
+    <form class="ui survey form" method="POST" action="{{ route('survey.submit') }}">
         {{ csrf_field() }}
+
         <div class="ui equal width grid text container">
             <div class="row">
                 <div class="center aligned column">
