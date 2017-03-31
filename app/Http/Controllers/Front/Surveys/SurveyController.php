@@ -46,10 +46,20 @@ class SurveyController extends Controller
                 'survey_id' => $request->session()->pull('survey_id'),
                 'rating' => $request->input('rating'),
                 'extra_comments' => $request->input('extra_comments'),
-                'user_id' => $request->session()->pull('rimbos_user')->_id,
+                'user_id' => $request->session()->has('rimbos_user') ? $request->session()->get('rimbos_user')->_id : null
             ]
         );
 
         return redirect('surveys.thanks');
+    }
+
+    /**
+     * Show the thanks view.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function thanks()
+    {
+        return view('front.surveys.thanks');
     }
 }
