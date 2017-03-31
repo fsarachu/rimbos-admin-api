@@ -25,7 +25,7 @@ class SurveyController extends Controller
     public function show(Request $request)
     {
 //        dd($request->session()->all());
-        return view('survey.show');
+        return view('front.surveys.show');
     }
 
     /**
