@@ -17,8 +17,8 @@
 
                 <div class="field">
                     <label for="event_id">Id del evento</label>
-                    <input id="event_id" name="event_id" placeholder="Ej: 58b0b93882d43b00106b2827Id" type="text"
-                           value="{{ old('event_id') }}">
+                    <input id="event_id" name="event_id" placeholder="58b0b93882d43b00106b2827Id" type="text"
+                           value="@if(old('event_id')) {{ old('event_id') }} @else 58b0b93882d43b00106b2827Id @endif">
                 </div>
 
                 <div class="field">
