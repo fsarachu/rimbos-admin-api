@@ -1,3 +1,9 @@
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .ui.survey.segment {
     background-color: #ff5456;
     min-height: 100%;
