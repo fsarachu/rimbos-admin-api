@@ -16,7 +16,7 @@
         <div class="ui equal width grid text container">
             <div class="row">
                 <div class="center aligned column">
-                    <h1>¿Que te pareció la música?</h1>
+                    <h1>{{ $survey->question }}</h1>
                 </div>
             </div>
             <div class="option row">
@@ -74,18 +74,23 @@
                     <h3 class="header">Muy mala</h3>
                 </div>
             </div>
-            <div class="ui divider"></div>
-            <div class="row">
-                <div class="center aligned column">
-                    <h2>¿Algún comentario?</h2>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="column">
-                    <textarea name="extra_comments" rows="2"></textarea>
+            @if($survey->has_extra_comments)
+                <div class="ui divider"></div>
+
+                <div class="row">
+                    <div class="center aligned column">
+                        <h2>{{ $survey->extra_comments_title }}</h2>
+                    </div>
                 </div>
-            </div>
+
+                <div class="row">
+                    <div class="column">
+                        <textarea name="extra_comments" rows="2"></textarea>
+                    </div>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="column">
                     <input class="ui blue fluid large button" type="submit" value="Cargar">
