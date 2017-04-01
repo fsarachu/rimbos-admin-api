@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSurvey;
 use App\Http\Requests\UpdateSurvey;
 use App\Survey;
-use Illuminate\Http\Request;
 
-class SurveyController extends Controller
+class SurveyController extends AdminBaseController
 {
     /**
      * Display a listing of surveys.

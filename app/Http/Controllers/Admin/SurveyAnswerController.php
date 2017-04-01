@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Survey;
 use App\SurveyAnswer;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class SurveyAnswerController extends Controller
+class SurveyAnswerController extends AdminBaseController
 {
     /**
      * Display a listing of the resource.
