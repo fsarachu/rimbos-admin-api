@@ -1,4 +1,4 @@
-const {mix} = require('laravel-mix');
+const { mix } = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,36 +11,5 @@ const {mix} = require('laravel-mix');
  |
  */
 
-
-/*
- |--------------------------------------------------------------------------
- | Admin Assets
- |--------------------------------------------------------------------------
-*/
-
-mix.js('resources/assets/admin/js/app.js', 'public/js/admin.js')
-    .styles([
-        'resources/assets/admin/semantic/dist/semantic.css',
-        'node_modules/semantic-ui-calendar/dist/calendar.css'
-    ], 'public/css/admin.css')
-    .copy('resources/assets/admin/semantic/dist/themes/default/assets/fonts', 'public/fonts')
-    .copy('resources/assets/admin/semantic/dist/themes/default/assets/images', 'public/images');
-
-
-/*
- |--------------------------------------------------------------------------
- | Front Assets
- |--------------------------------------------------------------------------
-*/
-
-mix.js('resources/assets/front/survey/js/survey.js', 'public/js/survey.js')
-    .styles('resources/assets/front/survey/css/survey.css', 'public/css/survey.css');
-
-
-/*
- |--------------------------------------------------------------------------
- | Common Assets
- |--------------------------------------------------------------------------
-*/
-
-mix.styles(['resources/assets/common/css/40x.css'], 'public/css/40x.css');
+mix.js('resources/assets/js/app.js', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css');
