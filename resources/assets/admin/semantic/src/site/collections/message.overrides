@@ -1,7 +1,0 @@
-/*******************************
-        Site Overrides
-*******************************/
-.ui.message:first-child,
-.ui.message:last-child {
-  margin: @verticalMargin 0em;
-}
