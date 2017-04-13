@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 //Route::group(['middleware' => 'jwt.auth'], function () {
-//
+//  Route::resource('quotes', 'QuoteController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 //});
 
 Route::post('/signup', 'UserController@register');
