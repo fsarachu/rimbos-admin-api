@@ -2,9 +2,9 @@ server {
 	listen 80;
 	listen [::]:80;
 
-	server_name .rimbos.dev;
+	server_name rimbos-api.dev;
 
-	root /var/www/rimbos-admin/public;
+	root /var/www/rimbos-api/public;
 	index index.php index.html;
 
 	location ~ \.php$ {
