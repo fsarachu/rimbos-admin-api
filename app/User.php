@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -26,9 +26,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function invoices()
-    {
-        return $this->hasMany(Invoice::class);
-    }
 }
