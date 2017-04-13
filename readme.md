@@ -1,3 +1,3 @@
-# Rimbos Admin
+# Rimbos API
 
-Administrative stuff for Rimbos app
+RESTful API for Rimbos web app.
