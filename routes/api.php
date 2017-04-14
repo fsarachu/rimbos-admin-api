@@ -19,6 +19,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::resource('invoices', 'InvoiceController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
     Route::resource('invoice-categories', 'InvoiceCategoryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
     Route::resource('invoice-payment-methods', 'InvoicePaymentMethodController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+    Route::resource('surveys', 'SurveyController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 });
 
 Route::post('/signup', 'UserController@register');
