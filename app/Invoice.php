@@ -50,4 +50,29 @@ class Invoice extends Model
         'created_at' => 'string',
         'updated_at' => 'string',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(InvoiceCategory::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
+    }
+
+    public function payment_method()
+    {
+        return $this->belongsTo(InvoicePaymentMethod::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
