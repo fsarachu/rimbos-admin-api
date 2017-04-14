@@ -23,8 +23,15 @@ class StoreInvoiceCategory extends FormRequest
      */
     public function rules()
     {
+        $category_id = $this->route('invoice_category')->id;
+
         return [
-            'name' => 'required|string|max:255|unique:invoice_categories'
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:invoice_categories,id,' . $category_id,
+            ],
         ];
     }
 }
