@@ -40,6 +40,11 @@ class StoreSurvey extends FormRequest
                 'string',
                 'max:255',
             ],
+            'event_id' => [
+                'required',
+                'string',
+                'max:255',
+            ],
         ];
     }
 }

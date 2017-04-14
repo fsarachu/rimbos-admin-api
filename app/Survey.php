@@ -10,11 +10,13 @@ class Survey extends Model
         'title',
         'question',
         'extra_comments_title',
+        'event_id',
     ];
 
     protected $casts = [
         'title' => 'string',
         'question' => 'string',
         'extra_comments_title' => 'string',
+        'event_id' => 'string',
     ];
 }

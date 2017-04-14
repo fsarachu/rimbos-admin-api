@@ -18,6 +18,7 @@ class CreateSurveysTable extends Migration
             $table->string('title');
             $table->string('question');
             $table->string('extra_comments_title')->nullable();
+            $table->string('event_id')->index();
             $table->timestamps();
         });
     }

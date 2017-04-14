@@ -34,6 +34,7 @@ class SurveyController extends Controller
                 'title',
                 'question',
                 'extra_comments_title',
+                'event_id',
             ]
         ));
 
@@ -69,6 +70,7 @@ class SurveyController extends Controller
                 'title',
                 'question',
                 'extra_comments_title',
+                'event_id',
             ]
         ));
 
