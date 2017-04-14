@@ -52,11 +52,11 @@ class InvoiceCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\StoreInvoiceCategory $request
+     * @param \App\Http\Requests\UpdateInvoiceCategory $request
      * @param  \App\InvoiceCategory $invoiceCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreInvoiceCategory $request, InvoiceCategory $invoiceCategory)
+    public function update(UpdateInvoiceCategory $request, InvoiceCategory $invoiceCategory)
     {
         $invoiceCategory->fill($request->only(['name']));
         $invoiceCategory->save();
