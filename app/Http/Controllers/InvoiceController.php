@@ -18,7 +18,7 @@ class InvoiceController extends Controller
     public function index()
     {
         return response()->json([
-            'data' => Invoice::all()
+            'data' => Invoice::with(['category', 'country', 'currency', 'payment_method', 'user'])->get()
         ], 200);
     }
 
@@ -78,6 +78,7 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
+        $invoice->load(['category', 'country', 'currency', 'payment_method', 'user']);
         return response()->json(['data' => $invoice], 200);
     }
 
