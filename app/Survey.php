@@ -19,4 +19,9 @@ class Survey extends Model
         'extra_comments_title' => 'string',
         'event_id' => 'string',
     ];
+
+    public function answers()
+    {
+        return $this->hasMany(SurveyAnswer::class);
+    }
 }
