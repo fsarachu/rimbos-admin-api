@@ -13,16 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::group(['middleware' => 'jwt.auth'], function () {
-//  Route::resource('quotes', 'QuoteController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
-//});
-
-$allowed_methods = ['index', 'store', 'show', 'update', 'destroy'];
-
-Route::resource('countries', 'CountryController', ['only' => $allowed_methods]);
-Route::resource('currencies', 'CurrencyController', ['only' => $allowed_methods]);
-Route::resource('invoices', 'InvoiceController', ['only' => $allowed_methods]);
-Route::resource('invoice-categories', 'InvoiceCategoryController', ['only' => $allowed_methods]);
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::resource('countries', 'CountryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+    Route::resource('currencies', 'CurrencyController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+    Route::resource('invoices', 'InvoiceController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+    Route::resource('invoice-categories', 'InvoiceCategoryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+});
 
 Route::post('/signup', 'UserController@register');
 Route::post('/login', 'UserController@authenticate');
