@@ -17,8 +17,9 @@ use Illuminate\Http\Request;
 //  Route::resource('quotes', 'QuoteController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 //});
 
-Route::resource('invoice-categories', 'InvoiceCategoryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 Route::resource('countries', 'CountryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+Route::resource('currencies', 'CurrencyController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+Route::resource('invoice-categories', 'InvoiceCategoryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 
 Route::post('/signup', 'UserController@register');
 Route::post('/login', 'UserController@authenticate');
