@@ -35,13 +35,13 @@ class UpdateCountry extends FormRequest
                 'required',
                 'string',
                 'max:2',
-                'unique:countries,iso_2,'.$country_id,
+                'unique:countries,iso_2,' . $country_id,
             ],
             'iso_3' => [
                 'required',
                 'string',
                 'max:3',
-                'unique:countries,iso_3,'.$country_id,
+                'unique:countries,iso_3,' . $country_id,
             ]
         ];
     }
