@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 //});
 
 Route::resource('invoice-categories', 'InvoiceCategoryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+Route::resource('countries', 'CountryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 
 Route::post('/signup', 'UserController@register');
 Route::post('/login', 'UserController@authenticate');
