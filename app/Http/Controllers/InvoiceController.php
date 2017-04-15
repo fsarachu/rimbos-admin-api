@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use Illuminate\Support\Facades\Storage;
 use JWTAuth;
+use App\Http\Requests\UploadInvoiceImage;
 use App\Http\Requests\StoreInvoice;
 use App\Http\Requests\UpdateInvoice;
 use App\Invoice;
-use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
@@ -102,7 +104,6 @@ class InvoiceController extends Controller
                         'invoice_number',
                         'amount_in_original_currency',
                         'one_dollar_rate',
-                        'image_url',
                         'include_rut',
                         'assign_anii',
                         'personal_spending',
@@ -137,5 +138,37 @@ class InvoiceController extends Controller
         $invoice->delete();
 
         return response()->json([], 204);
+    }
+
+    /**
+     * Upload an image and attach it to the specified invoice.
+     *
+     * @param \App\Http\Requests\UploadInvoiceImage $request
+     * @param  \App\Invoice $invoice
+     * @return \Illuminate\Http\Response
+     */
+    public function uploadImage(UploadInvoiceImage $request, Invoice $invoice)
+    {
+        if ($invoice->image_url) {
+            return response()->json(['error' => 'Invoice already has an attached image'], 400);
+        }
+
+        try {
+
+            $disk = 'public';
+
+            $local_path = $request->file('image')->store('invoices', $disk);
+            $url = Storage::disk($disk)->url($local_path);
+
+            $invoice->image_url = $url;
+            $invoice->save();
+
+        } catch (Exception $e) {
+
+            return response()->json(['error' => 'Could not create record'], 500);
+
+        }
+
+        return response()->json(['data' => compact('url')], 201);
     }
 }

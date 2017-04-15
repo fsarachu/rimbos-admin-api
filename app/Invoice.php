@@ -16,7 +16,6 @@ class Invoice extends Model
         'one_dollar_rate',
         'amount_in_dollars',
         'actual_paid_amount',
-        'image_url',
         'include_rut',
         'assign_anii',
         'personal_spending',

@@ -58,12 +58,6 @@ class UpdateInvoice extends FormRequest
                 'numeric',
                 'min:0.01',
             ],
-            'image_url' => [
-                'present',
-                'nullable',
-                'string',
-                'max:2000',
-            ],
             'include_rut' => [
                 'required',
                 'boolean',
