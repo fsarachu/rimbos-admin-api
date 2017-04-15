@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
+
+Route::post('/signup', 'UserController@register')->name('signup');
+
+Route::post('/login', 'UserController@authenticate')->name('login');
+
 Route::group(['middleware' => 'jwt.auth'], function () {
 
     Route::resource('countries', 'CountryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
@@ -36,6 +41,3 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('surveys/{survey}/answers', 'SurveyAnswerController@store')->name('survey-answers.store');
 
 });
-
-Route::post('/signup', 'UserController@register');
-Route::post('/login', 'UserController@authenticate');
