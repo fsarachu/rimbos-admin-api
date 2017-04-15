@@ -14,14 +14,26 @@ class SurveyAnswerController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $answers = SurveyAnswer::all();
+
+        return response()->json([
+            'data' => $answers,
+        ], 200);
+    }
+
+    /**
+     * Display the answers for the specified survey.
+     *
      * @param  \App\Survey $survey
      * @return \Illuminate\Http\Response
      */
-    public function index(Survey $survey)
+    public function indexBySurvey(Survey $survey)
     {
-        return response()->json([
-            'data' => $survey->answers,
-        ], 200);
+        return response()->json(['data' => $survey->answers], 200);
     }
 
     /**
@@ -59,17 +71,12 @@ class SurveyAnswerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Survey $survey
-     * @param  \App\SurveyAnswer $surveyAnswer
+     * @param  \App\SurveyAnswer $survey_answer
      * @return \Illuminate\Http\Response
      */
-    public function show(Survey $survey, SurveyAnswer $answer)
+    public function show(SurveyAnswer $survey_answer)
     {
-        if ($answer->survey_id !== $survey->id) {
-            throw new ModelNotFoundException(); //TODO: Move this to middleware(?
-        }
-
-        return response()->json(['data' => $answer], 200);
+        return response()->json(['data' => $survey_answer], 200);
     }
 
     /**

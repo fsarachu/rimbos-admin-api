@@ -14,13 +14,25 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'jwt.auth'], function () {
+
     Route::resource('countries', 'CountryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+
     Route::resource('currencies', 'CurrencyController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+
     Route::resource('invoices', 'InvoiceController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+
     Route::resource('invoice-categories', 'InvoiceCategoryController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+
     Route::resource('invoice-payment-methods', 'InvoicePaymentMethodController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+
     Route::resource('surveys', 'SurveyController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
-    Route::resource('surveys.answers', 'SurveyAnswerController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+
+    Route::resource('survey-answers', 'SurveyAnswerController', ['only' => ['index', 'show', 'update', 'destroy']]);
+
+    Route::get('surveys/{survey}/answers', 'SurveyAnswerController@indexBySurvey')->name('survey-answers.indexBySurvey');
+
+    Route::post('surveys/{survey}/answers', 'SurveyAnswerController@store')->name('survey-answers.store');
+
 });
 
 Route::post('/signup', 'UserController@register');
